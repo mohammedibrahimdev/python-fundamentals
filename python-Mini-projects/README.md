@@ -16,18 +16,21 @@ These projects focus on strengthening my Python programming fundamentals.
 * Library Management System
 * Command-Line Task Manager
 
-Through these projects, I am practicing variables, conditions, loops, functions, lists, dictionaries, file handling, exception handling, and OOP.
+Through these projects, I am practicing variables, conditions, loops, functions, lists, dictionaries, file handling, exception handling, modules, and OOP basics.
 
 ## 2. Python Data Mini Projects
 
-After building my core Python foundation, I am applying Python to work with data.
+After building my core Python foundation, I am applying Python to work with and process data.
 
 * Matrix Calculator
 * Student Marks Analyzer
+* CSV File Cleaner
 * Student Data Analyzer
+* Weather API Reader
+* Sales Data Analysis
 * Netflix Dataset Analysis
 
-These projects help me practice NumPy, Pandas, data processing, data cleaning, analysis, and visualization.
+These projects help me practice NumPy, Pandas, data processing, data cleaning, APIs, JSON, basic analysis, and visualization.
 
 ## What I Am Learning
 
