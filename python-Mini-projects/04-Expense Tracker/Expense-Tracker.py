@@ -146,6 +146,145 @@ def Average_Expense():
     print(f"Average Expense : {sum_amount/total_expense}")
 
 
+def search_by_category():
+    category = input("Enter Category : ")
+
+    found = True
+    for ID, expense in Expense.items():
+        if expense["category"] == category:
+            print("========================")
+            print("Searched by category : ")
+            print(f"Expense ID  : {ID}")
+            print(f"Amount      : {expense['ammount']}")
+            print(f"Category    : {expense['category']}")
+            print(f"Description : {expense['description']}")
+            print(f"Date        : {expense['date']}")
+            print()
+            found = False
+
+    if found:
+        print("Expense is not found")
+
+
+def search_by_date():
+    date = input("Enter Date : ")
+
+    found = True
+    for ID , expense  in Expense.items():
+        if expense['date'] == date:
+            print("======================")
+            print("Searched by Date ")
+            print(f"Expense ID : {ID}")
+            print(f"Amount : {expense['amount']}")
+            print(f"Category : {expense['category']}")
+            print(f"Description : {expense['description']}")
+            print(f"Date : {expense['date']}")
+            print()
+            found = False
+
+    if found:
+        print("Expense is not found")
+
+def search_by_amount():
+    amount = int(input("Enter amount "))
+
+    found = True
+    for ID  , expense in Expense.items():
+        if expense['amount'] == amount:
+            print("=====================")
+            print("searched by Amount ")
+            print(f"Expense ID  : {ID}")
+            print(f"Amount      : {expense['amount']}")
+            print(f"Category    : {expense['category']}")
+            print(f"Description : {expense['description']}")
+            print(f"Date        : {expense['date']}")
+            found = False
+
+    if found:
+        print("Expense is not found")
+
+def Search_Expenses():
+    if len(Expense) == 0:
+        print("NO Expense is added")
+        return
+    print("Search Expenses")
+    print("1. By Category")
+    print("2. By Date")
+    print("3. By Amount")
+    choise = int(input("Enter Your Choise : "))
+
+    match choise:
+        case 1:
+            search_by_category()
+        case 2:
+            search_by_date()
+        case 3:
+            search_by_amount();
+
+#sub-function of edit Expenses :
+def edit_amonut(ID , expense):
+    amount = int(input("Enter Amount to Edit : "))
+
+    previous_amount = expense['amount']
+    expense['amount'] = amount
+    print("Edited the amount : ")
+    print(f"Previous Amount : {previous_amount}")
+    print(f"New Amount      : {amount}")
+
+    print("Edited sucessfully")
+
+def edit_category(ID , expense):
+
+    category = input("Enter Category to Edit : ")
+
+    previous_category = expense['category']
+    expense['category'] = category
+    print("Edited the category : ")
+    print(f"Previous Category : {previous_category}")
+    print(f"New Category      : {category}")
+
+
+
+
+    
+
+
+def Edit_Expenses():
+    if len(Expense) == 0:
+        print("No Expense is added")
+        return
+
+    ID = int(input("Enter Expense ID : "))
+
+    for id, expense in Expense.items():
+        if ID == id:
+            print("Current Expense :")
+            print(f"Amount     : {expense['amount']}")
+            print(f"Category   : {expense['category']}")
+            print(f"Desciption : {expense['description']}")
+            print(f"Date       : {expense['date']}")
+
+    print("Enter to Edit ")
+    print("1. Edit Amount")
+    print("2. Edit Category")
+    print("3. Edit Desciption")
+    print("4. Edit Date")
+    choise = int(input("Enter here : "))
+
+    match choise:
+        case 1:
+            edit_amount(ID , expense)
+        case 2:
+            edit_category(ID , expense)
+        case 3:
+            edit_desciption(ID, expense)
+        case 4:
+            edit_date(ID , expense)
+        
+
+
+
+
 print("welcome to expense tracker")
 while(True):
     print("1. add expense")
@@ -154,6 +293,9 @@ while(True):
     print("4. Total by Category")
     print("5. Check Highest Expense")
     print("6. Average Expense")
+    print("7. Lowest Expense")
+    print("8. Search Expenses")
+    print("9. Edit Expenses")
     choise = int(input("Enter ur choise : "))
     print()
 
@@ -170,3 +312,9 @@ while(True):
             Highest_Expense()
         case 6:
             Average_Expense()
+        case 7:
+            Lowest_Expense()
+        case 8:
+            Search_Expenses()
+        case 9:
+            Edit_Expenses()
