@@ -16,11 +16,31 @@ Expense = {
 
 
 def Add_Expense():
-    amount = int(input("Enter Amount   : "))
-    category = input("Enter Category   : ")
-    descrip = input("Enter Description : ")
-    date = input("Enter Date           : ")
+    try:
+        amount = float(input("Enter Amount   : "))
+    except ValueError:
+        print("Please Enter a valid number : \n")
+        print()
+        return
 
+    if amount <= 0:
+        print("Amount must be greater then 0")
+        return
+    
+    category = input("Enter Category   : ")
+    if  category == "":
+        print("Category cannot be Empty\n")
+        return
+    descrip = input("Enter Description : ")
+    if descrip == "":
+        print("Desciptio cannot be Empty\n")
+        return
+    
+    date = input("Enter Date           : ")
+    if date == "":
+        print("Date cannot be Empty")
+        return
+    
     Expense[len(Expense) + 1] = {
         "amount": amount,
         "category": category,
@@ -72,7 +92,10 @@ def Total_by_Category():
         return
 
     category = input("Enter a Category : ")
-    print()
+    if category == "":
+        print("Category cannot be Empty\n")
+        return
+    
 
     total = 0
     istrue = False
@@ -155,7 +178,10 @@ def Average_Expense():
 def search_by_category():
 
     category = input("Enter Category : ")
-
+    if category == "":
+        print("Category cannot be Empty")
+        return
+    
     found = True
 
     for ID, expense in Expense.items():
@@ -180,7 +206,9 @@ def search_by_category():
 def search_by_date():
 
     date = input("Enter Date : ")
-
+    if date == "":
+        print("Date cannot be Empty")
+        return
     found = True
 
     for ID, expense in Expense.items():
@@ -204,8 +232,11 @@ def search_by_date():
 
 def search_by_amount():
 
-    amount = int(input("Enter amount "))
-
+    try:
+        amount = int(input("Enter Amount "))
+    except ValueError:
+        print("Please Enter Valid Amount : ")
+        return
     found = True
 
     for ID, expense in Expense.items():
@@ -237,8 +268,13 @@ def Search_Expenses():
     print("2. By Date")
     print("3. By Amount")
 
-    choise = int(input("Enter Your Choise : "))
-
+    try:
+        choise = int(input("Enter Your Choise : "))
+    except ValueError:
+        print("please Enter valid choise")
+        print()
+        return
+    
     match choise:
 
         case 1:
@@ -256,9 +292,13 @@ def Search_Expenses():
 # ==============================
 
 def edit_amount(ID, expense):
-
-    amount = int(input("Enter Amount to Edit : "))
-
+    
+    try:
+        amount = int(input("Enter Amount to Edit : "))
+    except ValueError:
+        print("Please Enter valid Amount")
+        return
+    
     previous_amount = expense['amount']
 
     expense['amount'] = amount
@@ -320,9 +360,12 @@ def Edit_Expenses():
     if len(Expense) == 0:
         print("No Expense is added")
         return
-
-    ID = int(input("Enter Expense ID : "))
-
+    try:
+        ID = int(input("Enter Expense ID : "))
+    except ValueError:
+        print("Please Enter valid ID ")
+        return
+    
     # Check whether ID exists
     if ID not in Expense:
         print("Expense ID is not found")
@@ -345,8 +388,13 @@ def Edit_Expenses():
     print("3. Edit Description")
     print("4. Edit Date")
 
-    choise = int(input("Enter here : "))
-
+    try:
+        choise = int(input("Enter here : "))
+    except ValueError:
+        print("Please Enter valid choise")
+        print()
+        return
+    
     match choise:
 
         case 1:
@@ -360,6 +408,41 @@ def Edit_Expenses():
 
         case 4:
             edit_date(ID, expense)
+
+
+def delete_Expense():
+    if len(Expense) == 0:
+        print("there is no Expense")
+        return
+
+    try:
+        id = int(input("Enter Expense ID : "))
+        print()
+    except ValueError:
+        print("Please Enter valid ID : ")
+        return
+
+    if id not in Expense:
+        print(f"Not found the Expense of ID : {id}")
+        return
+
+    expense = Expense[id]
+
+    print("Expense: ")
+    print(f"Amount      : {expense['amount']}")
+    print(f"Category    : {expense['category']}")
+    print(f"Description : {expense['description']}")
+    print(f"Date        : {expense['date']}")
+    print()
+
+    sure = input("Are you sure you want to delete? (y/n): ")
+
+    if sure == 'y' or sure == 'Y':
+        del Expense[id]
+        print("Expense Deleted successfully.")
+    else:
+        print("Expense is not Deleted")
+
 
 
 # ==============================
@@ -379,9 +462,14 @@ while True:
     print("7. Lowest Expense")
     print("8. Search Expenses")
     print("9. Edit Expenses")
+    print("10. Delete Expenses")
 
-    choise = int(input("Enter ur choise : "))
-    print()
+    try:
+        choise = int(input("Enter ur choise : "))
+        print()
+    except ValueError:
+        print("Please Enter valid choise : ")
+        continue
 
     match choise:
 
@@ -411,3 +499,5 @@ while True:
 
         case 9:
             Edit_Expenses()
+        case 10:
+            delete_Expense()
