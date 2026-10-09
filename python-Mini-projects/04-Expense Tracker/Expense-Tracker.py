@@ -1,3 +1,6 @@
+import json
+
+
 Expense = {
     1:{
         "amount":500,
@@ -313,7 +316,10 @@ def edit_amount(ID, expense):
 def edit_category(ID, expense):
 
     category = input("Enter Category to Edit : ")
-
+    if category == "":
+        print("Category cannot be Empty")
+        return
+    
     previous_category = expense['category']
 
     expense['category'] = category
@@ -328,7 +334,10 @@ def edit_category(ID, expense):
 def edit_description(ID, expense):
 
     description = input("Enter Description to Edit : ")
-
+    if description == "":
+        print("Description cannot be Empty")
+        return
+    
     previous_description = expense['description']
 
     expense['description'] = description
@@ -343,7 +352,10 @@ def edit_description(ID, expense):
 def edit_date(ID, expense):
 
     date = input("Enter Date to Edit : ")
-
+    if date == "":
+        print("Date cannt be Empty")
+        return
+    
     previous_date = expense['date']
 
     expense['date'] = date
@@ -399,15 +411,19 @@ def Edit_Expenses():
 
         case 1:
             edit_amount(ID, expense)
+            Save_Expense()
 
         case 2:
             edit_category(ID, expense)
+            Save_Expense()
 
         case 3:
             edit_description(ID, expense)
-
+            Save_Expense()
+            
         case 4:
             edit_date(ID, expense)
+            Save_Expense()
 
 
 def delete_Expense():
@@ -444,10 +460,34 @@ def delete_Expense():
         print("Expense is not Deleted")
 
 
+def Save_Expense():
+
+    with open("expenses.json" , "w") as file:
+        json.dump(Expense , file, indent=4)
+
+    print("Expenses saved successfully.")
+
+
+def Load_Expense():
+    try:
+        with open("expenses.json" , "r") as file:
+            data = json.load(file)
+
+        Expense.clear()
+        Expense.update({int(key): value for key , value  in data.items()})
+
+        print("Expenses Loaded Successfully")
+
+    except FileNotFoundError:
+        print("No saved expenses found. Starting with an empty expense Tracker.")
 
 # ==============================
 # MAIN MENU
 # ==============================
+
+
+Load_Expense()
+
 
 print("welcome to expense tracker")
 
@@ -463,6 +503,7 @@ while True:
     print("8. Search Expenses")
     print("9. Edit Expenses")
     print("10. Delete Expenses")
+    print("11. Exit")
 
     try:
         choise = int(input("Enter ur choise : "))
@@ -475,7 +516,7 @@ while True:
 
         case 1:
             Add_Expense()
-
+            Save_Expense()
         case 2:
             View_Expenses()
 
@@ -499,5 +540,13 @@ while True:
 
         case 9:
             Edit_Expenses()
+            Save_Expense()
+
         case 10:
             delete_Expense()
+            Save_Expense()
+
+        case 11:
+            Save_Expense()
+            print("Exiting Expense Tracker----")
+            break
