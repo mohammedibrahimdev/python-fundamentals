@@ -1,0 +1,26 @@
+{
+    "1": {
+        "amount": 300.0,
+        "category": "Food",
+        "description": "Brakfast",
+        "date": "2026-10-10"
+    },
+    "2": {
+        "amount": 250.0,
+        "category": "Food",
+        "description": "Lunch",
+        "date": "01-10-2026"
+    },
+    "3": {
+        "amount": 120.0,
+        "category": "Transport",
+        "description": "Bus fare",
+        "date": "02-10-2026"
+    },
+    "4": {
+        "amount": 800.0,
+        "category": "Shopping",
+        "description": "Shoes",
+        "date": "03-10-2026"
+    }
+}
