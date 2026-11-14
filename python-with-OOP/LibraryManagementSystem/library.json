@@ -1,0 +1,39 @@
+{
+    "books": [
+        {
+            "book_ID": 101,
+            "Title": "Python Basics",
+            "Author": "John",
+            "available": false
+        },
+        {
+            "book_ID": 102,
+            "Title": "C Language",
+            "Author": "Ibrahim",
+            "available": false
+        },
+        {
+            "book_ID": 103,
+            "Title": "DBMS",
+            "Author": "Ibrahim",
+            "available": true
+        },
+        {
+            "book_ID": 104,
+            "Title": "COA",
+            "Author": "Ibrahim",
+            "available": true
+        }
+    ],
+    "members": [
+        {
+            "member_ID": 1,
+            "member_name": "Ibrahim",
+            "Email": "ibrahim@email.com",
+            "borrowed_books": [
+                101,
+                102
+            ]
+        }
+    ]
+}
