@@ -2,26 +2,26 @@
     "books": [
         {
             "book_ID": 101,
-            "Title": "Python Basics",
-            "Author": "John",
+            "title": "Python Basics",
+            "author": "John",
             "available": false
         },
         {
             "book_ID": 102,
-            "Title": "C Language",
-            "Author": "Ibrahim",
+            "title": "C Language",
+            "author": "Ibrahim",
             "available": false
         },
         {
             "book_ID": 103,
-            "Title": "DBMS",
-            "Author": "Ibrahim",
+            "title": "DBMS",
+            "author": "Ibrahim",
             "available": true
         },
         {
             "book_ID": 104,
-            "Title": "COA",
-            "Author": "Ibrahim",
+            "title": "COA",
+            "author": "Ibrahim",
             "available": true
         }
     ],
